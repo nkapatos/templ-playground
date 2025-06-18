@@ -1,0 +1,52 @@
+version: 3
+
+vars:
+  APP_PORT: 8080
+  PROXY_PORT: 8081
+  TEMPL_DIR: ./templ
+  DIST_DIR: ./dist
+  STATIC_DIR: ./static
+  ASSETS_DIR: ./assets
+  AIR_TMP_DIR: tmp
+  AIR_BIN_PATH: ./tmp/bin/main
+  AIR_BUILD_CMD: go build -o ./tmp/bin/main .
+  AIR_EXCLUDE_DIRS: node_modules,assets,tmp,vendor
+  AIR_INCLUDE_EXT: go,css,js
+  AIR_EXCLUDE_EXT: templ
+  AIR_MISC_CLEAN_ON_EXIT: true
+  AIR_PROXY_ENABLED: true
+  AIR_PROXY_PROXY_PORT: 8081
+  AIR_PROXY_APP_PORT: 8080
+
+tasks:
+  default:
+    cmds:
+      - live
+  
+  live:app:
+    desc: Rebuild go files when there is a change. A change can be direct edit of go files, generated go files from templ and dist/static assets js,css (can be generated from esbuild) 
+    cmds:
+      - go run github.com/air-verse/air@latest -build.cmd="{{.AIR_BUILD_CMD}}" -build.bin="{{.AIR_BIN_PATH}}" -build.exclude_dir="{{.AIR_EXCLUDE_DIRS}}" -build.include_ext="{{.AIR_INCLUDE_EXT}}" -misc.clean_on_exit="{{.AIR_MISC_CLEAN_ON_EXIT}}" -proxy.enabled="{{.AIR_PROXY_ENABLED}}" -proxy.proxy_port="{{.AIR_PROXY_PROXY_PORT}}" -proxy.app_port="{{.AIR_PROXY_APP_PORT}}" -tmp_dir="{{.AIR_TMP_DIR}}"
+         
+
+  live:templ:
+    desc: Live reload the templates
+    cmds:
+      - go tool templ generate -path {{.TEMPL_DIR}} -watch -lazy -w 4
+
+  live:esbuild:
+    desc: Bundle and watch JS/TS files
+    cmds:
+      - node build.js
+
+  live:
+    desc: Live reload the go code, templates, and assets
+    deps:
+      - live:templ
+      - live:esbuild
+      - live:app
+
+  format:templ:
+    desc: Format all templ files
+    cmds:
+      - templ fmt {{.TEMPL_DIR}}
