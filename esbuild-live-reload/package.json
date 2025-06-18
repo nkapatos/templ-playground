@@ -10,12 +10,13 @@
   "author": "Nikos Kapatos",
   "license": "MIT",
   "packageManager": "pnpm@10.12.1",
-	"dependencies": {
-		"@tailwindcss/postcss": "^4.1.8",
-		"postcss": "^8.5.4",
-		"tailwindcss": "^4.1.8"
-	},
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^4.1.8"
+  },
   "devDependencies": {
+    "daisyui": "^5.0.43",
     "esbuild": "0.25.5"
   }
 }
