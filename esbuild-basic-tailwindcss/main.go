@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/a-h/templ"
-	"github.com/nkapatos/templ-playground/esbuild-live-reload/templ/views"
+	"github.com/nkapatos/templ-playground/esbuild-basic-tailwindcss/templ/views"
 )
 
 func main() {
