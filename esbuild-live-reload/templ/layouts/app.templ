@@ -1,0 +1,27 @@
+package layouts
+
+import "time"
+
+import "github.com/nkapatos/templ-playground/esbuild-live-reload/templ/components"
+
+templ App() {
+	@Base() {
+		<div class="min-h-screen flex flex-col">
+			<header class="bg-gray-900 text-white">
+				@components.Navigation()
+			</header>
+			
+			<main class="flex-1 bg-gray-50">
+				<div class="container mx-auto px-4 py-8">
+					{ children... }
+				</div>
+			</main>
+			
+			<footer class="bg-gray-800 text-white py-6">
+				<div class="container mx-auto px-4 text-center">
+					<p>&copy; { time.Now().Year() } An App. No rights reserved what so ever!</p>
+				</div>
+			</footer>
+		</div>
+	}
+}

@@ -1,0 +1,21 @@
+{
+  "name": "esbuild-live-reload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Nikos Kapatos",
+  "license": "MIT",
+  "packageManager": "pnpm@10.12.1",
+	"dependencies": {
+		"@tailwindcss/postcss": "^4.1.8",
+		"postcss": "^8.5.4",
+		"tailwindcss": "^4.1.8"
+	},
+  "devDependencies": {
+    "esbuild": "0.25.5"
+  }
+}
