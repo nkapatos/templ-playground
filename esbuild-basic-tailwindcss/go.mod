@@ -1,4 +1,4 @@
-module github.com/nkapatos/templ-playground/esbuild-live-reload
+module github.com/nkapatos/templ-playground/esbuild-basic-tailwindcss
 
 go 1.24.2
 

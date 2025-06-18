@@ -18,7 +18,7 @@
 ## Project Structure
 
 ```
-esbuild-live-reload/
+esbuild-basic-tailwindcss/
 ├── assets/
 │   ├── css/
 │   │   └── index.css          # Tailwind CSS with Templ source scanning

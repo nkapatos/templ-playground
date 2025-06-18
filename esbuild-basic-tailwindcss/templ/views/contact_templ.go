@@ -5,12 +5,13 @@ package views
 
 //lint:file-ignore SA4006 This context is only used if a nested component is present.
 
-import "github.com/a-h/templ"
-import templruntime "github.com/a-h/templ/runtime"
+import (
+	"github.com/a-h/templ"
+	templruntime "github.com/a-h/templ/runtime"
+	"github.com/nkapatos/templ-playground/esbuild-basic-tailwindcss/templ/layouts"
+)
 
-import "github.com/nkapatos/templ-playground/esbuild-live-reload/templ/layouts"
-
-func About() templ.Component {
+func Contact() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -43,7 +44,7 @@ func About() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"max-w-4xl mx-auto\"><h1 class=\"text-3xl font-bold text-gray-900 mb-6\">About Us</h1><div class=\"prose prose-lg\"><p class=\"text-gray-700 mb-4\">Welcome to our application! This is a sample about page that demonstrates the routing functionality.</p><p class=\"text-gray-700 mb-4\">This page is built using Go, Templ, and Tailwind CSS for a modern web development experience.</p><p class=\"text-gray-700\">Feel free to explore the other pages using the navigation menu above.</p></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"max-w-4xl mx-auto\"><h1 class=\"text-3xl font-bold text-gray-900 mb-6\">Contact Us</h1><div class=\"prose prose-lg\"><p class=\"text-gray-700 mb-4\">Get in touch with us! This is a sample contact page that demonstrates the routing functionality.</p><div class=\"bg-gray-100 p-6 rounded-lg\"><h2 class=\"text-xl font-semibold text-gray-900 mb-4\">Contact Information</h2><ul class=\"space-y-2 text-gray-700\"><li><strong>Email:</strong> contact@example.com</li><li><strong>Phone:</strong> +1 (555) 123-4567</li><li><strong>Address:</strong> 123 Main Street, City, State 12345</li></ul></div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
