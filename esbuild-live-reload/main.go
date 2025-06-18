@@ -9,10 +9,12 @@ import (
 )
 
 func main() {
-	component := views.Home()
+	// Route handlers
+	http.Handle("/", templ.Handler(views.Home()))
+	http.Handle("/about", templ.Handler(views.About()))
+	http.Handle("/contact", templ.Handler(views.Contact()))
 
-	http.Handle("/", templ.Handler(component))
-
+	// Static assets
 	fs := http.FileServer(http.Dir("dist"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
 
