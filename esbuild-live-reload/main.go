@@ -13,6 +13,7 @@ func main() {
 	http.Handle("/", templ.Handler(views.Home()))
 	http.Handle("/about", templ.Handler(views.About()))
 	http.Handle("/contact", templ.Handler(views.Contact()))
+	http.Handle("/daisyui", templ.Handler(views.DaisyUI()))
 
 	// Static assets
 	fs := http.FileServer(http.Dir("dist"))

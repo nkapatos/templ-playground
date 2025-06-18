@@ -29,7 +29,7 @@ func Navigation() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<nav class=\"bg-gray-800 text-white p-4\"><div class=\"container mx-auto flex justify-between items-center\"><div class=\"text-xl font-bold\"><a href=\"/\" class=\"hover:text-gray-300\">An App</a></div><ul class=\"flex space-x-6\"><li><a href=\"/\" class=\"hover:text-gray-300\">Home</a></li><li><a href=\"/about\" class=\"hover:text-gray-300\">About</a></li><li><a href=\"/contact\" class=\"hover:text-gray-300\">Contact</a></li></ul></div></nav>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<nav class=\"bg-gray-800 text-white p-4\"><div class=\"container mx-auto flex justify-between items-center\"><div class=\"text-xl font-bold\"><a href=\"/\" class=\"hover:text-gray-300\">An App</a></div><ul class=\"flex space-x-6\"><li><a href=\"/\" class=\"hover:text-gray-300\">Home</a></li><li><a href=\"/about\" class=\"hover:text-gray-300\">About</a></li><li><a href=\"/contact\" class=\"hover:text-gray-300\">Contact</a></li><li><a href=\"/daisyui\" class=\"hover:text-gray-300\">DaisyUI</a></li></ul></div></nav>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
