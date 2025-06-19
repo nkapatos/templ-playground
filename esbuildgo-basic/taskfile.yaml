@@ -9,7 +9,7 @@ vars:
   ASSETS_DIR: ./assets
   AIR_TMP_DIR: tmp
   AIR_BIN_PATH: ./tmp/bin/main
-  AIR_BUILD_CMD: go build -o ./tmp/bin/main .
+  AIR_BUILD_CMD: go build -o ./tmp/bin/main ./dev/dev.go
   AIR_EXCLUDE_DIRS: node_modules,assets,tmp,vendor
   AIR_INCLUDE_EXT: go,css,js
   AIR_EXCLUDE_EXT: templ
@@ -43,7 +43,7 @@ tasks:
     desc: Live reload the go code, templates, and assets
     deps:
       - live:templ
-      - live:esbuild
+      # - live:esbuild
       - live:app
 
   format:templ:

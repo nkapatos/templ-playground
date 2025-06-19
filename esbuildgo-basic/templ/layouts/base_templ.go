@@ -37,7 +37,7 @@ func Base() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><script>\n\n\t\tnew EventSource('/esbuild').addEventListener('change', () => location.reload())\n\t</script></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><script>\n\n\t\tnew EventSource('/esbuild').addEventListener('change', () => location.reload())\n\t</script><script>(() => {\n\t\t\t\tconst eventSource = new EventSource(\"/__air_internal/sse\");\n\n\t\t\t\teventSource.addEventListener('reload', () => {\n\t\t\t\t\tlocation.reload();\n\t\t\t\t});\n\n\t\t\t\teventSource.addEventListener('build-failed', (event) => {\n\t\t\t\t\tconst data = JSON.parse(event.data);\n\t\t\t\t\tconsole.error(data);\n\t\t\t\t});\n\n\n\n\t\t\t})();\n\t</script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
