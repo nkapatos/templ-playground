@@ -7,13 +7,18 @@ templ Base() {
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<title>Templ App</title>
-			<link rel="stylesheet" href="/assets/index.css"/>
-			<script src="/assets/main.js"></script>
+			<!-- TODO: temp change of the assets path as I don't want to deal with rewrites right now -->
+			<link rel="stylesheet" href="/assets/css/index.css"/>
+			<script src="/assets/ts/main.js"></script>
 		</head>
 		<body>
 			<div id="content">
 				{ children... }
 			</div>
+			<script>
+
+		new EventSource('/esbuild').addEventListener('change', () => location.reload())
+	</script>
 		</body>
 	</html>
 }
