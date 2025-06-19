@@ -1,0 +1,142 @@
+package views
+
+import "github.com/nkapatos/templ-playground/esbuild-go/templ/layouts"
+
+templ DaisyUI() {
+	@layouts.App() {
+		<div class="space-y-8">
+			<!-- Hero Section -->
+			<div class="hero bg-base-200 rounded-lg">
+				<div class="hero-content text-center">
+					<div class="max-w-md">
+						<h1 class="text-5xl font-bold">DaisyUI Demo</h1>
+						<p class="py-6">A showcase of various DaisyUI components and their capabilities.</p>
+						<button class="btn btn-primary">Get Started</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Progress Bars Section -->
+			<div class="card bg-base-100 shadow-xl">
+				<div class="card-body">
+					<h2 class="card-title">Progress Indicators</h2>
+					<div class="space-y-4">
+						<div>
+							<label class="label">
+								<span class="label-text">Loading Progress</span>
+								<span class="label-text-alt">75%</span>
+							</label>
+							<progress class="progress progress-primary" value="75" max="100"></progress>
+						</div>
+						<div>
+							<label class="label">
+								<span class="label-text">Success Progress</span>
+								<span class="label-text-alt">90%</span>
+							</label>
+							<progress class="progress progress-success" value="90" max="100"></progress>
+						</div>
+						<div>
+							<label class="label">
+								<span class="label-text">Warning Progress</span>
+								<span class="label-text-alt">45%</span>
+							</label>
+							<progress class="progress progress-warning" value="45" max="100"></progress>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Buttons Section -->
+			<div class="card bg-base-100 shadow-xl">
+				<div class="card-body">
+					<h2 class="card-title">Button Variants</h2>
+					<div class="flex flex-wrap gap-2">
+						<button class="btn">Default</button>
+						<button class="btn btn-primary">Primary</button>
+						<button class="btn btn-secondary">Secondary</button>
+						<button class="btn btn-accent">Accent</button>
+						<button class="btn btn-ghost">Ghost</button>
+						<button class="btn btn-link">Link</button>
+					</div>
+					<div class="flex flex-wrap gap-2 mt-4">
+						<button class="btn btn-outline">Outline</button>
+						<button class="btn btn-outline btn-primary">Primary Outline</button>
+						<button class="btn btn-outline btn-secondary">Secondary Outline</button>
+						<button class="btn btn-outline btn-accent">Accent Outline</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Mockup Components -->
+			<div class="grid md:grid-cols-2 gap-6">
+				<!-- Browser Mockup -->
+				<div class="card bg-base-100 shadow-xl">
+					<div class="card-body">
+						<h2 class="card-title">Browser Mockup</h2>
+						<div class="mockup-browser border bg-base-300">
+							<div class="mockup-browser-toolbar">
+								<div class="input">https://daisyui.com</div>
+							</div>
+							<div class="flex justify-center px-4 py-16 bg-base-200">
+								<p class="text-center">Browser content goes here</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Code Mockup -->
+				<div class="card bg-base-100 shadow-xl">
+					<div class="card-body">
+						<h2 class="card-title">Code Mockup</h2>
+						<div class="mockup-code bg-base-300 text-base-content">
+							<pre data-prefix="$"><code>npm i daisyui@latest</code></pre>
+							<pre data-prefix=">" class="text-warning"><code>installing...</code></pre>
+							<pre data-prefix=">" class="text-success"><code>Done!</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Menu Section -->
+			<div class="card bg-base-100 shadow-xl">
+				<div class="card-body">
+					<h2 class="card-title">Menu Components</h2>
+					<div class="grid md:grid-cols-2 gap-6">
+						<div>
+							<h3 class="text-lg font-semibold mb-2">Vertical Menu</h3>
+							<ul class="menu bg-base-200 w-56 rounded-box">
+								<li><a>Item 1</a></li>
+								<li><a class="active">Item 2 (Active)</a></li>
+								<li><a>Item 3</a></li>
+								<li><a>Item 4</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold mb-2">Horizontal Menu</h3>
+							<ul class="menu menu-horizontal bg-base-200 rounded-box">
+								<li><a>Item 1</a></li>
+								<li><a class="active">Item 2</a></li>
+								<li><a>Item 3</a></li>
+								<li><a>Item 4</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Pagination Section -->
+			<div class="card bg-base-100 shadow-xl">
+				<div class="card-body">
+					<h2 class="card-title">Pagination</h2>
+					<div class="join">
+						<button class="join-item btn">«</button>
+						<button class="join-item btn">Page 1</button>
+						<button class="join-item btn btn-active">Page 2</button>
+						<button class="join-item btn">Page 3</button>
+						<button class="join-item btn">»</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+} 
