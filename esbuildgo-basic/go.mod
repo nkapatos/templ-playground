@@ -4,14 +4,16 @@ go 1.24.2
 
 tool github.com/a-h/templ/cmd/templ
 
-require github.com/a-h/templ v0.3.898
+require (
+	github.com/a-h/templ v0.3.898
+	github.com/evanw/esbuild v0.25.5
+)
 
 require (
 	github.com/a-h/parse v0.0.0-20250122154542-74294addb73e // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
 	github.com/cli/browser v1.3.0 // indirect
-	github.com/evanw/esbuild v0.25.5 // indirect
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
