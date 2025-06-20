@@ -15,7 +15,7 @@ import (
 	"github.com/nkapatos/templ-playground/esbuild-go/templ/views"
 )
 
-func httpserverv2() {
+func tw_httpserver() {
 	// Parse esbuild dev server URL
 	esbuildURL, err := url.Parse("http://localhost:8000")
 	if err != nil {
@@ -47,18 +47,19 @@ func httpserverv2() {
 func tailwindCLI() (string, error) {
 	cmd := exec.Command("npx", "@tailwindcss/cli", "-i", "assets/css/index.css", "-o", "-", "--minify")
 	// cmd := exec.Command("npx", "@tailwindcss/cli", "-i", "./assets/input.css", "-o", "./src/output.css", "--watch")
-	var out bytes.Buffer
-	cmd.Stderr = &out
-	cmd.Stdout = &out
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+	cmd.Stderr = &stdout
+	cmd.Stdout = &stderr
 	err := cmd.Run()
 	if err != nil {
 		return "", err
 	}
-	return out.String(), nil
+	return stdout.String(), nil
 }
 
-func devserverv2(twcss string) error {
-
+func tw_devserver(twcss string) error {
+	fmt.Print(twcss)
 	ctx, err := api.Context(api.BuildOptions{
 		EntryPoints: []string{"assets/ts/main.ts"},
 		Stdin: &api.StdinOptions{
@@ -89,7 +90,7 @@ func devserverv2(twcss string) error {
 	select {}
 }
 
-func mainv2() {
+func main() {
 	twcssChan := make(chan struct {
 		css string
 		err error
@@ -108,7 +109,7 @@ func mainv2() {
 		if res.err != nil {
 			log.Fatalf("Tailwind build failed: %v", res.err)
 		}
-		if err := devserverv2(res.css); err != nil {
+		if err := tw_devserver(res.css); err != nil {
 			log.Fatalf("esbuild failed: %v", err)
 		}
 		log.Println("Build completed successfully")
@@ -117,6 +118,6 @@ func mainv2() {
 
 	}
 
-	// go devserver()
-	httpserverv2()
+	// go devserverv2()
+	tw_httpserver()
 }
