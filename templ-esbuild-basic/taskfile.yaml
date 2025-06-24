@@ -1,22 +1,18 @@
 version: 3
 
+env:
+  PRODUCTION: false
+
 vars:
   APP_PORT: 8080
+  APP_CMD: go run .
+  APP_HOST: localhost
   PROXY_PORT: 8081
   TEMPL_DIR: ./templ
+  TEMPL_OPEN_BROWSER: false
   DIST_DIR: ./dist
   STATIC_DIR: ./static
   ASSETS_DIR: ./assets
-  AIR_TMP_DIR: tmp
-  AIR_BIN_PATH: ./tmp/bin/main
-  AIR_BUILD_CMD: go build -o ./tmp/bin/main ./dev/dev.go
-  AIR_EXCLUDE_DIRS: node_modules,assets,tmp,vendor
-  AIR_INCLUDE_EXT: go,css,js
-  AIR_EXCLUDE_EXT: templ
-  AIR_MISC_CLEAN_ON_EXIT: true
-  AIR_PROXY_ENABLED: true
-  AIR_PROXY_PROXY_PORT: 8081
-  AIR_PROXY_APP_PORT: 8080
 
 tasks:
   default:
@@ -26,18 +22,48 @@ tasks:
   live:templ:
     desc: Live reload the templates
     cmds:
-      - go tool templ generate --watch --proxy="http://localhost:{{.APP_PORT}}" --proxy-port="{{.PROXY_PORT}}" --cmd="go run ."
+      - go tool templ generate --watch --proxy="http://{{.APP_HOST}}:{{.APP_PORT}}" --cmd="{{.APP_CMD}}" --proxybind="{{.APP_HOST}}" --proxyport="{{.PROXY_PORT}}" --open-browser="{{.TEMPL_OPEN_BROWSER}}"
 
   live:esbuild:
     desc: Bundle and watch JS/TS files
+    env:
+      APP_HOST: '{{.APP_HOST}}'
+      PROXY_PORT: '{{.PROXY_PORT}}'
     cmds:
-      - node build.js
+      - node build.js dev
+
+  build:esbuild:
+    desc: Build JS/TS files for production
+    env:
+      DEV: "false"
+      PRODUCTION: true
+    cmds:
+      - node build.js build
+
+  build:templ:
+    desc: Build the templates
+    env:
+      PRODUCTION: true
+    cmds:
+      - go tool templ generate --cmd="{{.APP_CMD}}"
 
   live:
     desc: Live reload the go code, templates, and assets
     deps:
-      - live:esbuild
       - live:templ
+      - live:esbuild
+
+  live:
+    desc: Live reload the go code, templates, and assets
+    deps:
+      - live:templ
+      - live:esbuild
+
+  build:
+    desc: Build the go code, templates, and assets
+    deps:
+      - build:esbuild
+      - build:templ
 
   format:templ:
     desc: Format all templ files
