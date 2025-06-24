@@ -1,0 +1,45 @@
+version: 3
+
+vars:
+  APP_PORT: 8080
+  PROXY_PORT: 8081
+  TEMPL_DIR: ./templ
+  DIST_DIR: ./dist
+  STATIC_DIR: ./static
+  ASSETS_DIR: ./assets
+  AIR_TMP_DIR: tmp
+  AIR_BIN_PATH: ./tmp/bin/main
+  AIR_BUILD_CMD: go build -o ./tmp/bin/main ./dev/dev.go
+  AIR_EXCLUDE_DIRS: node_modules,assets,tmp,vendor
+  AIR_INCLUDE_EXT: go,css,js
+  AIR_EXCLUDE_EXT: templ
+  AIR_MISC_CLEAN_ON_EXIT: true
+  AIR_PROXY_ENABLED: true
+  AIR_PROXY_PROXY_PORT: 8081
+  AIR_PROXY_APP_PORT: 8080
+
+tasks:
+  default:
+    cmds:
+      - live
+
+  live:templ:
+    desc: Live reload the templates
+    cmds:
+      - go tool templ generate --watch --proxy="http://localhost:{{.APP_PORT}}" --proxy-port="{{.PROXY_PORT}}" --cmd="go run ."
+
+  live:esbuild:
+    desc: Bundle and watch JS/TS files
+    cmds:
+      - node build.js
+
+  live:
+    desc: Live reload the go code, templates, and assets
+    deps:
+      - live:esbuild
+      - live:templ
+
+  format:templ:
+    desc: Format all templ files
+    cmds:
+      - templ fmt {{.TEMPL_DIR}}
